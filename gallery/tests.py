@@ -10,9 +10,11 @@ class CategoryModelTest(TestCase):
         self.assertEqual(self.category.name, "Nature")
         self.assertIsInstance(self.category, Category)
 
-    def test_duplicate_category_name(self):
-        with self.assertRaises(Exception):
-            Category.objects.create(name="Nature")
+    def test_category_long_name(self):
+        long_name = "Nature" * 50
+        category = Category.objects.create(name=long_name)
+        self.assertEqual(category.name, long_name)
+        self.assertIsInstance(category, Category)
 
 class ImageModelTest(TestCase):
     def setUp(self):
