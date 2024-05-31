@@ -9,5 +9,7 @@ services:
     volumes:
       - .:/app
     environment:
+      - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=${DEBUG}
       - DATABASE_URL=sqlite:///db.sqlite3
     network_mode: "bridge"
